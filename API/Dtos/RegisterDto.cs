@@ -7,7 +7,7 @@ namespace API.Dtos
 
         public string UserName { get; set; }    
         [Required]
-        //[StringLength(15 ,MinimumLength =3 ,ErrorMessage ="Fist Name Should be at last 3 char")]
+        [StringLength(15 ,MinimumLength =3 ,ErrorMessage ="Fist Name Should be at last 3 char")]
         public string FirstName { get; set; }
 
         [Required]

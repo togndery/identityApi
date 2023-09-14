@@ -1,9 +1,11 @@
 ﻿using API.Dtos;
 using API.Models;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -47,6 +49,17 @@ namespace API.Controllers
             var userDto = Helper.HelperExstions.CreateApplicationUserDto(user, _services);
 
             return userDto;
+        }
+
+
+        [Authorize]
+        [HttpGet("refresh-user-token")]
+        public async Task<ActionResult<UserDto>> RefreshUserToken()
+        {
+            var user = await _userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Name)?.Value);
+
+            return Helper.HelperExstions.CreateApplicationUserDto(user,_services);
+
         }
 
 

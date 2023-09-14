@@ -13,7 +13,6 @@ namespace API.Helper
         {
             return new UserDto
             {
-                
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 JWT= jwtServices.CreateJwt(user)
