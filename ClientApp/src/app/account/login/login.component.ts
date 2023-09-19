@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       this.accountServices.login(this.loginForm.value).subscribe({
         next:(res :any) => {
          
+          console.log(res);
           
         },
         error:err =>{
